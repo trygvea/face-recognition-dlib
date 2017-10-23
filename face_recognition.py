@@ -19,17 +19,20 @@ def get_face_encodings(face):
     return [np.array(face_recognition_model.compute_face_descriptor(face, face_pose, 1)) for face_pose in faces_landmarks]
 
 
-def compare_face_encodings(known_faces, face):
-    return np.linalg.norm(known_faces - face, axis=1) <= 0.6
+def get_face_matches(known_faces, face):
+    return np.linalg.norm(known_faces - face, axis=1)
 
 
 def find_match(known_faces, person_names, face):
-    matches = compare_face_encodings(known_faces, face) # get a list of True/False
-    count = 0
-    for match in matches:
-        if match:
-            return person_names[count]
-        count += 1
+    matches = get_face_matches(known_faces, face) # get a list of True/False
+    min_index = matches.argmin()
+    min_value = matches[min_index]
+    if min_value < 0.55:
+        return person_names[min_index]+"! ({0:.2f})".format(min_value)
+    if min_value < 0.58:
+        return person_names[min_index]+" ({0:.2f})".format(min_value)
+    if min_value < 0.65:
+        return person_names[min_index]+"?"+" ({0:.2f})".format(min_value)
     return 'Not Found'
 
 
