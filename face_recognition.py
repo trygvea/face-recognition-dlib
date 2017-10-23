@@ -71,6 +71,8 @@ def load_face_encodings(faces_folder_path):
 def recognize_faces_in_video(face_encodings, person_names):
     faceClassifier = cv2.CascadeClassifier(data_dir + '/opencv/haarcascade_frontalface_default.xml')
     cap = cv2.VideoCapture(0)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 360)
 
     while True:
         ret, frame = cap.read()
