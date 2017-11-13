@@ -16,4 +16,13 @@ This code started out as as a cut and paste from the following sources:
 
 # Run
 * Get hold of some images of people you want to recognize. One file per person will do. Name the file after the person. 
-* Configure faces_folder_path in source. Run with python3.  
+* Configure faces_folder_path in source. Run with python3.
+
+
+# Experiments
+See folder experiments. In chronological order:
+* _raw: first attempt
+* _dual: uses both opencv and dlib face-detection
+* _faster: A relatively fast implementation using opencv for face detection (and dlib for face recognition)
+* _refactor: Last attempt to tidy up
+ 
