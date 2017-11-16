@@ -19,6 +19,9 @@ This code started out as as a cut and paste from the following sources:
 * Configure faces_folder_path in source. Run with python3.
 
 
+# Sample
+![Trygve og Einar](trygve-og-einar.gif "Trygve og Einar")
+
 # Experiments
 See folder experiments. In chronological order:
 * _raw: first attempt
